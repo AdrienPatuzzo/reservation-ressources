@@ -18,7 +18,11 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 from django.views.generic import TemplateView
+from accounts.mixins import AdminOnlyMixin
 
+
+class AdminTestView(AdminOnlyMixin, TemplateView):
+    template_name = "admin_test.html"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +36,6 @@ urlpatterns = [
         ),
         name='dashboard'
     ),
-]
 
+    path('admin-test/', AdminTestView.as_view(), name='admin_test'),
+]

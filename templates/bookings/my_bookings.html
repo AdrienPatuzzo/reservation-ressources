@@ -6,16 +6,28 @@
 </head>
 <body>
     <h1>Mes réservations</h1>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <ul>
         {% for booking in bookings %}
-            <li>
-                {{ booking.resource.name }} -
-                {{ booking.start_date }} →
-                {{ booking.end_date }} -
-                {{ booking.status }}
-            </li>
-        {% empty %}
-            <li>Aucune réservation.</li>
+        <li>
+            {{ booking.resource.name }}
+            ({{ booking.start_date }} → {{ booking.end_date }})
+            - {{ booking.get_status_display }}
+
+            {% if booking.status == "CONFIRMED" %}
+                <a href="{% url 'cancel_booking' booking.id %}">
+                    Annuler
+                </a>
+            {% endif %}
+        </li>
         {% endfor %}
     </ul>
 </body>

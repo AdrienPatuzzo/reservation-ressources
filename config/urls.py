@@ -38,4 +38,9 @@ urlpatterns = [
     ),
 
     path('admin-test/', AdminTestView.as_view(), name='admin_test'),
+
+    path("resources/", include("resources.urls")),
+
+    path("bookings/", include("bookings.urls")),
+
 ]

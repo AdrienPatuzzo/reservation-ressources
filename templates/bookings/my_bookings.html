@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes réservations</title>
+</head>
+<body>
+    <h1>Mes réservations</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                {{ booking.resource.name }} -
+                {{ booking.start_date }} →
+                {{ booking.end_date }} -
+                {{ booking.status }}
+            </li>
+        {% empty %}
+            <li>Aucune réservation.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

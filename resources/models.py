@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-# Une catégorie permet de regrouper les ressources.
+# Une catégorie permet de regrouper les ressources. (ex: Informatique, Mobilier, Audiovisuel)
 class Category(models.Model):
     name = models.CharField(max_length=100)
 

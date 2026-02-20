@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulaire</title>
-</head>
-<body>
-    <h1>Créer une réservation</h1>
+{% extends "base.html" %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Réserver</button>
-    </form>
-</body>
-</html>
+{% block title %}Nouvelle réservation{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">Créer une réservation</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-success w-100 mt-3">
+                        Réserver
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
